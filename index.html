@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIRAZ CITY — VMP SERVER</title>
+<meta name="description" content="Shiraz City - Official VMP Roleplay Community">
+<meta name="theme-color" content="#08090b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--panel:#101216;--panel2:#14171c;--line:rgba(255,255,255,.105);--white:#f7f8fa;--muted:#a0a5ae;--accent:#f7f8fa;--accent2:#d0d3d8;--radius:22px;--max:1240px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{background:var(--bg);color:var(--white);font-family:Vazirmatn,Inter,sans-serif;line-height:1.85;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 7%,rgba(255,255,255,.055),transparent 32%),radial-gradient(ellipse at 8% 50%,rgba(255,255,255,.035),transparent 28%)}
+a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--accent);color:#111}
+.wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+.navbar{position:fixed;z-index:50;inset:0 0 auto;height:82px;background:rgba(8,9,11,.78);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;direction:ltr;flex-shrink:0}
+.brand img{width:49px;height:49px;object-fit:contain;border-radius:14px;background:#fff;padding:3px;box-shadow:0 0 28px #f7f8fa17}
+.brand-text{display:grid;line-height:1.2}.brand-name{font:800 15px Orbitron,Inter,sans-serif;letter-spacing:1.6px}.brand-sub{font:600 8px Inter,sans-serif;letter-spacing:2.5px;color:#a4a9b1;margin-top:6px}
+.nav-links{display:flex;align-items:center;gap:27px}.nav-links a{font-size:12px;color:#b5bac2;transition:.25s}.nav-links a:hover{color:var(--accent)}
+.nav-actions{display:flex;gap:9px;align-items:center}.lang,.menu-btn{border:1px solid var(--line);background:#ffffff06;color:#ddd;padding:9px 12px;font:700 10px Inter,sans-serif;cursor:pointer;border-radius:10px}.lang:hover,.menu-btn:hover{border-color:var(--accent);color:var(--accent)}.menu-btn{display:none}
+.hero{min-height:790px;padding:150px 0 92px;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero:after{content:"SHIRAZ";position:absolute;left:-35px;bottom:-95px;font:900 clamp(100px,19vw,270px)/1 Orbitron,sans-serif;letter-spacing:-.08em;color:#ffffff04;pointer-events:none;white-space:nowrap}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:55px;direction:ltr;position:relative;z-index:1}
+.hero-copy{direction:rtl;text-align:right}.kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid #f7f8fa36;background:#f7f8fa09;color:#ffffff;padding:8px 13px;border-radius:999px;font:700 9px Inter,sans-serif;letter-spacing:1.6px;direction:ltr;margin-bottom:25px}.pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
+.hero h1{font:900 clamp(48px,7.5vw,94px)/.98 Orbitron,Inter,sans-serif;letter-spacing:-2px;direction:ltr;text-align:right;margin-bottom:23px}.hero h1 span{display:block;font:800 .22em Inter,sans-serif;letter-spacing:5px;color:var(--accent);margin-top:22px}
+.hero-copy p{max-width:570px;color:#aeb3bc;font-size:15px;line-height:2.25;margin-bottom:30px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{min-height:48px;padding:12px 22px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:12px;border:1px solid var(--line);font-size:12px;font-weight:800;transition:transform .25s,background .25s,border-color .25s}.btn:hover{transform:translateY(-4px)}.btn-primary{background:var(--accent);color:#10120a;border-color:var(--accent);box-shadow:0 8px 28px #f7f8fa1c}.btn-primary:hover{background:#ffffff}.btn-secondary{background:#ffffff06;color:#f3f4f6}.btn-secondary:hover{border-color:#ffffff60}
+.hero-meta{display:flex;align-items:center;gap:15px;margin-top:34px;color:#8e949d;font-size:11px}.meta-line{width:35px;height:1px;background:var(--accent)}
+.hero-art{position:relative;display:grid;place-items:center;min-height:480px;direction:ltr}
+.orbit{position:absolute;width:min(440px,90%);aspect-ratio:1;border:1px solid #ffffff16;border-radius:50%;animation:spin 32s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed #f7f8fa2a;border-radius:50%;inset:25px}.orbit:after{inset:58px;border-style:solid;border-color:#ffffff0c}
+.orbit-dot{position:absolute;top:15%;right:12%;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 22px var(--accent)}
+.logo-frame{position:relative;width:min(350px,72vw);aspect-ratio:1;display:grid;place-items:center;border-radius:42px;transform:rotate(-4deg);background:linear-gradient(145deg,#ffffff12,#ffffff02 50%,#f7f8fa0a);border:1px solid #ffffff20;box-shadow:0 40px 100px #0009,inset 0 1px #ffffff17;animation:float 6s ease-in-out infinite}
+.logo-frame:before{content:"";position:absolute;inset:13px;border:1px solid #ffffff12;border-radius:32px}
+.logo-frame img{width:78%;height:78%;object-fit:contain;border-radius:28px;filter:drop-shadow(0 18px 32px #0008);transform:rotate(4deg);position:relative;z-index:1}
+.art-tag{position:absolute;bottom:10%;right:2%;direction:ltr;border:1px solid var(--line);background:#111419e8;backdrop-filter:blur(15px);padding:12px 16px;border-radius:14px;display:flex;align-items:center;gap:11px;box-shadow:0 15px 40px #0006}.art-tag img{width:34px;height:34px;object-fit:contain;background:white;border-radius:9px;padding:2px}.art-tag strong{display:block;font:800 10px Inter,sans-serif;letter-spacing:1.3px}.art-tag small{display:block;color:#a0a5ae;font:600 8px Inter,sans-serif;letter-spacing:1.4px;margin-top:5px}
+.art-index{position:absolute;top:9%;left:0;color:#707680;font:700 10px Inter,sans-serif;letter-spacing:2px;writing-mode:vertical-rl}
+.stats{border-block:1px solid var(--line);background:#ffffff03}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}.stat{padding:26px 20px;display:flex;align-items:center;justify-content:center;gap:15px;border-left:1px solid var(--line)}.stat:last-child{border-left:0}.stat-icon{width:42px;height:42px;border:1px solid #f7f8fa30;border-radius:13px;display:grid;place-items:center;color:var(--accent);font:800 13px Orbitron,sans-serif}.stat strong{display:block;font:800 19px Orbitron,sans-serif;direction:ltr;text-align:right}.stat small{display:block;color:#8d939c;font-size:10px;letter-spacing:1px}
+section.content-section{padding:110px 0;position:relative}.section-top{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:42px}.section-tag{font:800 9px Inter,sans-serif;letter-spacing:3px;color:var(--accent);direction:ltr;margin-bottom:10px}.section-title{font-size:clamp(27px,4vw,42px);font-weight:900;line-height:1.45}.section-desc{max-width:440px;color:#9298a2;font-size:12px;line-height:2.1;margin-top:8px}.section-count{font:800 42px Orbitron,sans-serif;color:#ffffff12;direction:ltr}
+.about-panel{display:grid;grid-template-columns:1fr .8fr;gap:25px;align-items:stretch}.about-copy,.quote-panel{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#ffffff07,#ffffff02);padding:35px;position:relative;overflow:hidden}.about-copy:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:#f7f8fa09;filter:blur(15px);left:-70px;bottom:-90px}.about-copy p{color:#aeb3bc;font-size:14px;line-height:2.35;position:relative;z-index:1}.about-copy p+p{margin-top:18px}.about-mini{display:flex;align-items:center;gap:13px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);position:relative;z-index:1}.about-mini img{width:54px;height:54px;object-fit:contain;border-radius:15px;background:#fff;padding:4px}.about-mini strong{font:800 12px Inter,sans-serif;letter-spacing:1px;display:block;direction:ltr}.about-mini small{font-size:10px;color:#8e949d}
+.quote-panel{min-height:270px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(140deg,#f7f8fa10,transparent 60%),#101216}.quote-logo{width:78px;height:78px;object-fit:contain;border-radius:20px;background:#fff;padding:5px;opacity:.96}.quote-mark{font:900 70px Georgia,serif;color:var(--accent);line-height:.8}.quote-panel blockquote{font-size:20px;font-weight:800;line-height:2}.quote-panel small{color:#9298a2;font:700 9px Inter,sans-serif;letter-spacing:2px;direction:ltr}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{min-height:255px;padding:25px 22px;border-radius:19px;border:1px solid var(--line);background:linear-gradient(160deg,#ffffff07,#ffffff02);transition:.3s;position:relative;overflow:hidden}.feature:hover{transform:translateY(-7px);border-color:#f7f8fa5e;background:linear-gradient(160deg,#f7f8fa0b,#ffffff02)}.feature:after{content:"";position:absolute;width:120px;height:120px;left:-50px;bottom:-60px;border-radius:50%;background:#f7f8fa0a;transition:.3s}.feature:hover:after{transform:scale(1.7)}.feature-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.feature-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#f7f8fa10;border:1px solid #f7f8fa30;color:var(--accent);font:800 17px Orbitron,sans-serif}.feature-num{font:700 10px Inter,sans-serif;color:#626873;letter-spacing:2px}.feature h3{font-size:16px;margin-bottom:10px}.feature p{font-size:11px;color:#969ca5;line-height:2.2}.feature-logo{position:absolute;left:17px;bottom:14px;width:25px;height:25px;object-fit:contain;opacity:.2;filter:grayscale(1)}
+.management-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.manager{border:1px solid var(--line);border-radius:18px;padding:23px;background:var(--panel);transition:.3s;position:relative;overflow:hidden}.manager:hover{border-color:#f7f8fa59;transform:translateY(-5px)}.manager-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}.manager-emblem{width:42px;height:42px;border-radius:13px;background:#fff;display:grid;place-items:center;padding:4px}.manager-emblem img{width:100%;height:100%;object-fit:contain}.manager-index{font:700 10px Inter,sans-serif;color:#666d77;letter-spacing:1.5px}.role{font:800 9px Inter,sans-serif;color:var(--accent);letter-spacing:1.2px;direction:ltr;text-align:right;min-height:20px}.manager-name{font:800 17px Inter,sans-serif;direction:ltr;text-align:right;letter-spacing:.1px;margin-top:8px;overflow-wrap:anywhere}.manager:after{content:"";position:absolute;bottom:0;right:0;width:55px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:.3s}.manager:hover:after{transform:scaleX(1)}
+.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.rule{display:grid;grid-template-columns:42px 1fr;gap:15px;padding:20px;border:1px solid var(--line);border-radius:16px;background:#ffffff03;transition:.25s}.rule:hover{border-color:#ffffff35;background:#ffffff06}.rule-no{width:40px;height:40px;border-radius:12px;background:#ffffff08;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);font:800 10px Inter,sans-serif}.rule h3{font:800 12px Inter,sans-serif;direction:ltr;text-align:right;margin-bottom:5px}.rule p{font-size:10px;color:#9ca2ac;line-height:2}
+.discord-section{padding:15px 0 110px!important}.discord-panel{position:relative;overflow:hidden;border:1px solid #f7f8fa30;border-radius:26px;padding:55px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;background:radial-gradient(ellipse at 85% 45%,#f7f8fa10,transparent 38%),linear-gradient(120deg,#ffffff06,#ffffff01)}.discord-panel:after{content:"SHIRAZ CITY";position:absolute;left:-10px;bottom:-50px;font:900 100px Orbitron,sans-serif;color:#ffffff04;white-space:nowrap;pointer-events:none}.discord-panel h2{font-size:clamp(24px,4vw,36px);font-weight:900;margin-bottom:10px}.discord-panel p{color:#9da3ac;font-size:12px}.coming{display:inline-flex;align-items:center;gap:10px;direction:ltr;font:800 11px Inter,sans-serif;letter-spacing:1.5px;background:#f7f8fa;color:#111;padding:15px 20px;border-radius:12px;white-space:nowrap;position:relative;z-index:1}.coming span{width:7px;height:7px;border-radius:50%;background:#111}
+footer{border-top:1px solid var(--line);padding:23px 0;background:#060709}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-brand{display:flex;align-items:center;gap:10px;direction:ltr;font:800 10px Orbitron,sans-serif;letter-spacing:1px;color:#c8ccd2}.footer-brand img{width:30px;height:30px;object-fit:contain;background:white;border-radius:8px;padding:2px}.credit{font-size:11px;color:#9298a2}.credit strong{font:700 11px Inter,sans-serif;color:#fff;direction:ltr;display:inline-block;margin-right:5px}.to-top{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--accent);font:800 15px Inter,sans-serif}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(-2deg)}}
+@media(max-width:1050px){.nav-links{gap:15px}.hero-grid{gap:20px}.features-grid,.management-grid{grid-template-columns:repeat(2,1fr)}.hero-art{min-height:400px}.rules-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.wrap{width:min(var(--max),calc(100% - 32px))}.navbar{height:72px}.brand img{width:42px;height:42px}.brand-name{font-size:12px}.nav-links{display:none;position:absolute;top:80px;right:16px;left:16px;padding:18px;background:#101216;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:10px 4px;border-bottom:1px solid #ffffff0b}.nav-links a:last-child{border-bottom:0}.menu-btn{display:block}.lang{display:none}.hero{padding:120px 0 65px;min-height:0}.hero-grid{grid-template-columns:1fr;gap:22px}.hero-art{order:-1;min-height:310px}.logo-frame{width:235px;border-radius:30px}.logo-frame:before{border-radius:22px}.orbit{width:290px}.art-index{left:7%}.art-tag{right:4%;bottom:0}.hero-copy{text-align:center}.hero h1{text-align:center;font-size:clamp(43px,12vw,72px)}.hero-copy p{font-size:13px;margin-inline:auto}.hero-buttons{justify-content:center}.hero-meta{justify-content:center}.stats-grid{grid-template-columns:1fr}.stat{border-left:0;border-bottom:1px solid var(--line);padding:17px}.stat:last-child{border-bottom:0}.stat strong,.stat small{text-align:center}.stat{justify-content:center}.content-section{padding:75px 0!important}.section-top{align-items:start;margin-bottom:28px}.section-count{font-size:30px}.section-title{font-size:28px}.section-desc{font-size:11px}.about-panel{grid-template-columns:1fr}.about-copy,.quote-panel{padding:25px}.quote-panel{min-height:240px}.features-grid,.management-grid{grid-template-columns:1fr 1fr}.feature{min-height:245px;padding:20px 16px}.feature h3{font-size:14px}.feature p{font-size:10px}.rules-grid{grid-template-columns:1fr}.discord-panel{grid-template-columns:1fr;padding:32px 24px;text-align:center}.coming{justify-self:center}.footer-inner{flex-wrap:wrap;justify-content:center;text-align:center}.credit{width:100%;order:3}.to-top{display:none}}
+@media(max-width:420px){.features-grid,.management-grid{grid-template-columns:1fr}.feature{min-height:210px}.hero-art{min-height:280px}.logo-frame{width:215px}.orbit{width:260px}.art-tag{transform:scale(.9);transform-origin:right bottom}.section-count{display:none}.brand-sub{letter-spacing:1.5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Announcement board + admin panel */
+.admin-trigger{border:1px solid #d9ff4355;background:linear-gradient(135deg,#d9ff43,#b6dc26);color:#10120a;border-radius:11px;padding:9px 13px;font-size:11px;font-weight:900;cursor:pointer;white-space:nowrap;box-shadow:0 5px 20px #d9ff4315;transition:.2s}
+.admin-trigger:hover{transform:translateY(-2px);box-shadow:0 8px 26px #d9ff4330}
+.announcements{display:none;position:relative;margin:100px auto 0;width:min(var(--max),calc(100% - 44px));border:1px solid #d9ff4345;border-radius:18px;background:linear-gradient(110deg,#d9ff4310,#ffffff04);overflow:hidden}
+.announcements.has-items{display:block}.announcement-head{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid #ffffff0d;color:var(--accent);font-size:11px;font-weight:900}.announcement-list{display:grid;gap:0}.announcement-item{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border-bottom:1px solid #ffffff0b}.announcement-item:last-child{border-bottom:0}.announcement-bullet{flex:0 0 8px;width:8px;height:8px;margin-top:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px #d9ff4366}.announcement-content{min-width:0;flex:1}.announcement-content strong{display:block;font-size:13px;margin-bottom:3px}.announcement-content p{color:#b2b7bf;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}.announcement-date{color:#858b94;font-size:10px;white-space:nowrap;margin-top:3px}
+.admin-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:#030405d9;backdrop-filter:blur(12px)}.admin-modal.open{display:flex}.admin-box{width:min(620px,100%);max-height:min(88vh,850px);overflow:auto;border:1px solid #ffffff1b;border-radius:24px;background:#101216;box-shadow:0 25px 100px #000b}.admin-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:20px 23px;background:#101216ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.admin-title{display:flex;align-items:center;gap:12px}.admin-title img{width:43px;height:43px;object-fit:contain;background:white;border-radius:12px;padding:3px}.admin-title h2{font-size:17px}.admin-title p{font:700 9px Inter,sans-serif;letter-spacing:1.5px;color:var(--accent)}.admin-close{width:35px;height:35px;border-radius:10px;border:1px solid var(--line);background:#ffffff08;color:white;cursor:pointer;font-size:20px}.admin-body{padding:23px}.admin-note{color:#a4aab3;font-size:12px;margin-bottom:18px}.admin-field{display:grid;gap:7px;margin-bottom:14px}.admin-field label{font-size:12px;color:#dfe2e7;font-weight:700}.admin-field input,.admin-field textarea{width:100%;border:1px solid #ffffff1a;border-radius:12px;background:#090a0c;color:#f7f8fa;padding:12px 13px;font:inherit;font-size:13px;outline:none}.admin-field input:focus,.admin-field textarea:focus{border-color:#d9ff4380;box-shadow:0 0 0 3px #d9ff4310}.admin-field textarea{resize:vertical;min-height:110px}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.admin-btn{border:1px solid var(--line);border-radius:11px;padding:11px 16px;cursor:pointer;font:800 12px Vazirmatn,sans-serif}.admin-btn.primary{background:var(--accent);border-color:var(--accent);color:#111}.admin-btn.secondary{background:#ffffff08;color:#eee}.admin-btn.danger{background:#ff555510;color:#ff8d8d;border-color:#ff555544}.admin-status{font-size:12px;color:var(--accent);min-height:23px;margin-top:12px}.admin-divider{border:0;border-top:1px solid var(--line);margin:24px 0}.admin-list-title{font-size:14px;margin-bottom:12px}.admin-list{display:grid;gap:10px}.admin-entry{display:flex;align-items:flex-start;gap:12px;padding:13px;border:1px solid var(--line);border-radius:14px;background:#ffffff04}.admin-entry>div{flex:1;min-width:0}.admin-entry strong{display:block;font-size:12px;margin-bottom:4px}.admin-entry p{font-size:11px;color:#a9afb8;white-space:pre-wrap;overflow-wrap:anywhere}.admin-entry button{flex-shrink:0}.admin-empty{padding:15px;border:1px dashed #ffffff20;border-radius:12px;color:#858b94;font-size:12px;text-align:center}
+@media(max-width:760px){.nav-actions{gap:6px}.admin-trigger{padding:8px 9px;font-size:10px}.announcements{width:calc(100% - 32px);margin-top:86px}.announcements:has(.announcement-item){margin-bottom:0}.admin-body{padding:17px}.admin-top{padding:16px 17px}.announcement-item{flex-wrap:wrap}.announcement-date{margin-right:20px}}
+
+
+/* Keep the management panel in its original accent theme; public pages are monochrome. */
+.admin-modal{--accent:#d9ff43;--accent2:#b6dc26}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home" aria-label="Shiraz City home">
+      <img src="1000072823.jpg" alt="لوگوی شیراز سیتی">
+      <span class="brand-text"><span class="brand-name">SHIRAZ CITY</span><span class="brand-sub"></span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">خانه</a><a href="#about">درباره شهر</a><a href="#features">سیستم‌ها</a><a href="#management">مدیریت</a><a href="#rules">قوانین</a><a href="#discord">دیسکورد</a>
+    </nav>
+    <div class="nav-actions"><button class="admin-trigger" type="button" onclick="openAdmin()">پنل مدیریت سایت↗</button><button class="lang" onclick="toggleLanguage()">EN / FA</button><button class="menu-btn" onclick="toggleMenu()" aria-label="باز کردن منو">منو ☰</button></div>
+  </div>
+</header>
+<section class="announcements" id="announcements" aria-live="polite"><div class="announcement-head"><span class="pulse"></span><span>اطلاعیه‌های شیراز سیتی</span></div><div class="announcement-list" id="announcementPublicList"></div></section>
+<main id="home">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="kicker"><span class="pulse"></span> OFFICIAL VMP ROLEPLAY COMMUNITY</div>
+      <h1>SHIRAZ<span>ROLEPLAY CITY</span></h1>
+      <p>به شهر شیراز خوش آمدید؛ جایی برای ساختن داستان خودتان، تجربه یک زندگی مجازی متفاوت و رقم زدن لحظاتی که انتخاب‌های شما مسیرشان را مشخص می‌کند.</p>
+      <div class="hero-buttons"><a class="btn btn-primary" href="#about">کشف دنیای شیراز <span>↙</span></a><a class="btn btn-secondary" href="#rules">مطالعه قوانین <span>↗</span></a></div>
+      <div class="hero-meta"><span class="meta-line"></span><span>هر انتخاب، بخشی از داستان توست.</span></div>
+    </div>
+    <div class="hero-art">
+      <div class="orbit"><span class="orbit-dot"></span></div>
+      <span class="art-index">SC / ROLEPLAY / 2026</span>
+      <div class="logo-frame"><img src="1000072823.jpg" alt="لوگوی اصلی Shiraz City"></div>
+      <div class="art-tag"><img src="1000072823.jpg" alt=""><span><strong>SHIRAZ CITY IN VMP</strong><small></small></span></div>
+    </div>
+  </div>
+</section>
+<div class="stats"><div class="wrap stats-grid">
+  <div class="stat"><span class="stat-icon">24/7</span><span><strong>24/7</strong><small>SUPPORT</small></span></div>
+  <div class="stat"><span class="stat-icon">RP</span><span><strong>RP</strong><small>STORY RP</small></span></div>
+  <div class="stat"><span class="stat-icon">SC</span><span><strong>100%</strong><small>COMMUNITY FOCUSED</small></span></div>
+</div></div>
+<section id="about" class="content-section">
+  <div class="wrap">
+    <div class="section-top reveal"><div><div class="section-tag">01 / ABOUT SHIRAZ</div><h2 class="section-title">شهری که داستانش را<br>خودت می‌سازی.</h2><p class="section-desc">در شیراز، هر بازیکن بخشی از داستان شهر است.</p></div><div class="section-count">01</div></div>
+    <div class="about-panel">
+      <div class="about-copy reveal"><p>شیراز سیتی با هدف ساخت یک تجربه متفاوت از Roleplay طراحی شده است؛ محیطی که در آن نقش شما فقط یک اسم نیست، بلکه بخشی از یک دنیای زنده است.</p><p>از انتخاب شغل و ساختن کسب‌وکار گرفته تا تعامل با دیگر بازیکنان، تصمیم‌های شما می‌توانند مسیر داستانتان را تغییر دهند.</p><div class="about-mini"><img src="1000072823.jpg" alt="لوگوی شیراز سیتی"><span><strong>SHIRAZ CITY</strong><small> VMP ROLEPLAY COMMUNITY</small></span></div></div>
+      <div class="quote-panel reveal"><img class="quote-logo" src="1000072823.jpg" alt="لوگوی شیراز سیتی"><span class="quote-mark">“</span><blockquote>هر بازیکن یک داستان دارد؛ اینجا جایی است که داستان‌ها به هم می‌رسند.</blockquote><small>ONE CITY · COUNTLESS STORIES</small></div>
+    </div>
+  </div>
+</section>
+<section id="features" class="content-section">
+  <div class="wrap">
+    <div class="section-top reveal"><div><div class="section-tag">02 / SHIRAZ SYSTEMS</div><h2 class="section-title">سیستم‌های شهر</h2><p class="section-desc">امکاناتی که تجربه حضور در شیراز را متفاوت می‌کنند.</p></div><div class="section-count">04</div></div>
+    <div class="features-grid">
+      <article class="feature reveal"><div class="feature-head"><span class="feature-icon">₿</span><span class="feature-num">SYSTEM 01</span></div><h3>اقتصاد پویا</h3><p>یک سیستم اقتصادی پویا برای ساختن مسیر مالی، کسب درآمد و توسعه زندگی شخصیت شما در شهر.</p><img class="feature-logo" src="1000072823.jpg" alt=""></article>
+      <article class="feature reveal"><div class="feature-head"><span class="feature-icon">⌘</span><span class="feature-num">SYSTEM 02</span></div><h3>مپ اختصاصی</h3><p>محیطی اختصاصی و طراحی‌شده برای ایجاد تجربه‌ای متفاوت و منحصربه‌فرد در شهر شیراز.</p><img class="feature-logo" src="1000072823.jpg" alt=""></article>
+      <article class="feature reveal"><div class="feature-head"><span class="feature-icon">↗</span><span class="feature-num">SYSTEM 03</span></div><h3>ماشین اختصاصی</h3><p>مجموعه‌ای از خودروهای اختصاصی برای تجربه بهتر رانندگی و زندگی در دنیای Roleplay.</p><img class="feature-logo" src="1000072823.jpg" alt=""></article>
+      <article class="feature reveal"><div class="feature-head"><span class="feature-icon">✳</span><span class="feature-num">SYSTEM 04</span></div><h3>پشتیبانی 24 ساعته</h3><p>تیم پشتیبانی برای همراهی بازیکنان و رسیدگی به مشکلات و درخواست‌های داخل شهر.</p><img class="feature-logo" src="1000072823.jpg" alt=""></article>
+    </div>
+  </div>
+</section>
+<section id="management" class="content-section">
+  <div class="wrap">
+    <div class="section-top reveal"><div><div class="section-tag">03 / MANAGEMENT</div><h2 class="section-title">مدیریت شهر</h2><p class="section-desc">تیمی که مسیر شیراز سیتی را مدیریت و هدایت می‌کند.</p></div><div class="section-count">04</div></div>
+    <div class="management-grid">
+      <article class="manager reveal"><div class="manager-top"><span class="manager-emblem"><img src="1000072823.jpg" alt=""></span><span class="manager-index">TEAM / 01</span></div><div class="role">SERVER OWNER</div><div class="manager-name">Arad-akrami</div></article>
+      <article class="manager reveal"><div class="manager-top"><span class="manager-emblem"><img src="1000072823.jpg" alt=""></span><span class="manager-index">TEAM / 02</span></div><div class="role">SUPREME COMMANDER</div><div class="manager-name">Taha-azad</div></article>
+      <article class="manager reveal"><div class="manager-top"><span class="manager-emblem"><img src="1000072823.jpg" alt=""></span><span class="manager-index">TEAM / 03</span></div><div class="role">GENERAL MANAGER</div><div class="manager-name">Ojilo-apex</div></article>
+      <article class="manager reveal"><div class="manager-top"><span class="manager-emblem"><img src="1000072823.jpg" alt=""></span><span class="manager-index">TEAM / 04</span></div><div class="role">FOUNDER</div><div class="manager-name">Rayan-asghari</div></article>
+    </div>
+  </div>
+</section>
+<section id="rules" class="content-section">
+  <div class="wrap">
+    <div class="section-top reveal"><div><div class="section-tag">04 / CITY RULES</div><h2 class="section-title">قوانین شیراز</h2><p class="section-desc">برای داشتن یک محیط سالم، منصفانه و حرفه‌ای، قوانین شهر را رعایت کنید.</p></div><div class="section-count">12</div></div>
+    <div class="rules-grid">
+      <article class="rule reveal"><span class="rule-no">01</span><div><h3>Respect</h3><p>احترام به تمام بازیکنان و اعضای تیم مدیریت الزامی است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">02</span><div><h3>RDM</h3><p>کشتن بازیکن بدون دلیل و سناریوی مناسب مجاز نیست.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">03</span><div><h3>VDM</h3><p>استفاده غیرمنطقی از خودرو برای آسیب زدن به بازیکنان ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">04</span><div><h3>Meta Gaming</h3><p>استفاده از اطلاعات خارج از بازی در نقش‌آفرینی ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">05</span><div><h3>Power Gaming</h3><p>تحمیل اتفاقات غیرمنطقی به شخصیت یا بازیکن دیگر مجاز نیست.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">06</span><div><h3>Fear RP</h3><p>ترس و واکنش منطقی شخصیت در موقعیت‌های خطرناک باید رعایت شود.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">07</span><div><h3>Combat Logging</h3><p>خروج از بازی برای فرار از سناریو یا مجازات ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">08</span><div><h3>Bug Abuse</h3><p>استفاده عمدی از باگ‌ها برای کسب مزیت ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">09</span><div><h3>Cheating</h3><p>هرگونه تقلب یا استفاده از نرم‌افزارهای غیرمجاز ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">10</span><div><h3>Stay In Character</h3><p>در طول سناریوهای Roleplay تا حد امکان در نقش خود باقی بمانید.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">11</span><div><h3>No Advertising</h3><p>تبلیغ سرورها، صفحات یا سرویس‌های دیگر بدون اجازه ممنوع است.</p></div></article>
+      <article class="rule reveal"><span class="rule-no">12</span><div><h3>Staff Decisions</h3><p>تصمیمات نهایی تیم مدیریت باید رعایت شود.</p></div></article>
+    </div>
+  </div>
+</section>
+<section id="discord" class="content-section discord-section">
+  <div class="wrap"><div class="discord-panel reveal"><div><div class="section-tag">05 / DISCORD COMMUNITY</div><h2>ارتباط با جامعه شیراز</h2><p>سرور Discord شیراز سیتی به‌زودی راه‌اندازی خواهد شد.</p></div><div class="coming"><span></span> COMING SOON</div></div></div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><div class="footer-brand"><img src="1000072823.jpg" alt=""> SHIRAZ CITY</div><div class="credit">توسعه و طراحی توسط : <strong>Arad-akrami</strong></div><a class="to-top" href="#home" aria-label="بازگشت به بالا">↑</a></div></footer>
+
+<div class="admin-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle" onclick="if(event.target===this)closeAdmin()">
+ <div class="admin-box">
+  <div class="admin-top"><div class="admin-title"><img src="1000072823.jpg" alt="لوگوی شیراز سیتی"><div><h2 id="adminModalTitle">پنل مدیریت شیراز سیتی</h2><p>SHIRAZ CITY / ADMIN CENTER</p></div></div><button class="admin-close" type="button" onclick="closeAdmin()" aria-label="بستن">×</button></div>
+  <div class="admin-body">
+   <div id="adminLogin">
+    <p class="admin-note">برای ثبت یا حذف اطلاعیه، رمز مدیریت را وارد کن.</p>
+    <form id="adminLoginForm"><div class="admin-field"><label for="adminPassword">رمز ورود</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="رمز مدیریت" required></div><div class="admin-actions"><button class="admin-btn primary" type="submit">ورود به پنل</button></div></form>
+    <p class="admin-status" id="loginStatus" role="status"></p>
+   </div>
+   <div id="adminDashboard" hidden>
+    <p class="admin-note">از این قسمت اطلاعیه جدید ثبت کن یا اطلاعیه‌های قبلی را حذف کن.</p>
+    <form id="announcementForm"><div class="admin-field"><label for="announcementTitle">عنوان اطلاعیه</label><input id="announcementTitle" maxlength="90" placeholder="مثلاً: زمان شروع فصل جدید" required></div><div class="admin-field"><label for="announcementText">متن اطلاعیه</label><textarea id="announcementText" maxlength="1600" placeholder="متن کامل اطلاعیه را بنویس..." required></textarea></div><div class="admin-actions"><button class="admin-btn primary" type="submit">＋ ثبت اطلاعیه</button><button class="admin-btn secondary" type="button" onclick="adminLogout()">خروج از پنل</button></div></form>
+    <p class="admin-status" id="announcementStatus" role="status"></p><hr class="admin-divider"><h3 class="admin-list-title">اطلاعیه‌های ثبت‌شده</h3><div class="admin-list" id="adminAnnouncementList"></div>
+    <p class="admin-note" style="margin-top:18px">توجه: این نسخه روی سایت ایستا اجرا می‌شود؛ اطلاعیه‌ها فقط در همین مرورگر ذخیره می‌شوند و به بازدیدکنندگان دیگر منتقل نمی‌شوند. برای انتشار عمومی واقعی و ورود امن، بک‌اند و پایگاه داده لازم است.</p>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+function toggleLanguage(){alert('نسخه انگلیسی سایت در حال توسعه است.')}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const ADMIN_PASSWORD = 'shirazcityrp@admin123@admin';
+const ANNOUNCEMENTS_KEY = 'shirazCityAnnouncementsV1';
+let adminAuthenticated = false;
+function getAnnouncements(){try{const data=JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)||'[]');return Array.isArray(data)?data:[]}catch(e){return []}}
+function saveAnnouncements(items){localStorage.setItem(ANNOUNCEMENTS_KEY,JSON.stringify(items))}
+function safeText(value){return String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function renderAnnouncements(){
+ const items=getAnnouncements();const board=document.getElementById('announcements');const publicList=document.getElementById('announcementPublicList');const adminList=document.getElementById('adminAnnouncementList');
+ publicList.innerHTML=items.map(item=>`<article class="announcement-item"><span class="announcement-bullet"></span><div class="announcement-content"><strong>${safeText(item.title)}</strong><p>${safeText(item.text)}</p></div><span class="announcement-date">${safeText(item.date||'')}</span></article>`).join('');
+ board.classList.toggle('has-items',items.length>0);
+ if(adminList){adminList.innerHTML=items.length?items.map(item=>`<article class="admin-entry"><div><strong>${safeText(item.title)}</strong><p>${safeText(item.text)}</p><p style="margin-top:6px">${safeText(item.date||'')}</p></div><button class="admin-btn danger" type="button" data-delete-announcement="${safeText(item.id)}">حذف</button></article>`).join(''):'<div class="admin-empty">هنوز اطلاعیه‌ای ثبت نشده است.</div>';}
+}
+function openAdmin(){document.getElementById('adminModal').classList.add('open');document.body.style.overflow='hidden';if(adminAuthenticated){document.getElementById('adminLogin').hidden=true;document.getElementById('adminDashboard').hidden=false;renderAnnouncements()}else{document.getElementById('adminLogin').hidden=false;document.getElementById('adminDashboard').hidden=true;document.getElementById('adminPassword').value='';document.getElementById('loginStatus').textContent='';setTimeout(()=>document.getElementById('adminPassword').focus(),50)}}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open');document.body.style.overflow='';}
+function adminLogout(){adminAuthenticated=false;document.getElementById('adminLogin').hidden=false;document.getElementById('adminDashboard').hidden=true;document.getElementById('adminPassword').value='';document.getElementById('loginStatus').textContent='';}
+document.getElementById('adminLoginForm').addEventListener('submit',function(e){e.preventDefault();const password=document.getElementById('adminPassword').value;if(password===ADMIN_PASSWORD){adminAuthenticated=true;document.getElementById('adminLogin').hidden=true;document.getElementById('adminDashboard').hidden=false;document.getElementById('loginStatus').textContent='';renderAnnouncements()}else{document.getElementById('loginStatus').textContent='رمز ورود اشتباه است.';document.getElementById('adminPassword').select()}});
+document.getElementById('announcementForm').addEventListener('submit',function(e){e.preventDefault();if(!adminAuthenticated)return;const title=document.getElementById('announcementTitle').value.trim();const textValue=document.getElementById('announcementText').value.trim();if(!title||!textValue)return;const items=getAnnouncements();items.unshift({id:String(Date.now())+'-'+Math.random().toString(36).slice(2,8),title,text:textValue,date:new Intl.DateTimeFormat('fa-IR',{dateStyle:'medium'}).format(new Date())});try{saveAnnouncements(items);this.reset();document.getElementById('announcementStatus').textContent='اطلاعیه ثبت شد.';renderAnnouncements()}catch(err){document.getElementById('announcementStatus').textContent='ذخیره انجام نشد؛ فضای ذخیره‌سازی مرورگر را بررسی کن.'}});
+document.getElementById('adminAnnouncementList').addEventListener('click',function(e){const btn=e.target.closest('[data-delete-announcement]');if(!btn||!adminAuthenticated)return;const id=btn.getAttribute('data-delete-announcement');saveAnnouncements(getAnnouncements().filter(item=>item.id!==id));document.getElementById('announcementStatus').textContent='اطلاعیه حذف شد.';renderAnnouncements()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAdmin()});
+renderAnnouncements();
+
+</script>
+```html
+<!-- SHIRAZ CITY | Smart Assistant -->
+<style>
+  #sc-bot, #sc-bot * { box-sizing: border-box; }
+
+  #sc-bot {
+    --sc-bg: #101010;
+    --sc-panel: #171717;
+    --sc-white: #f7f7f7;
+    --sc-muted: #a4a4a4;
+    --sc-border: rgba(255,255,255,.11);
+    --sc-glow: rgba(255,255,255,.12);
+    direction: rtl;
+    font-family: Tahoma, Arial, sans-serif;
+    color: var(--sc-white);
+    z-index: 99999;
+    position: relative;
+  }
+
+  #sc-bot .sc-launcher {
+    position: fixed;
+    left: 25px;
+    bottom: 25px;
+    width: 65px;
+    height: 65px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 22px;
+    background: linear-gradient(145deg,#fff,#cfcfcf);
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 35px rgba(0,0,0,.45), 0 0 25px var(--sc-glow);
+    transition: transform .3s, border-radius .3s, box-shadow .3s;
+    animation: sc-float 3s ease-in-out infinite;
+  }
+
+  #sc-bot .sc-launcher:hover {
+    transform: translateY(-5px) scale(1.04);
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(255,255,255,.2);
+  }
+
+  #sc-bot .sc-launcher img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  #sc-bot .sc-launcher .sc-fallback {
+    display: none;
+    font-size: 27px;
+    font-weight: bold;
+  }
+
+  #sc-bot .sc-launcher.sc-no-logo img { display: none; }
+  #sc-bot .sc-launcher.sc-no-logo .sc-fallback { display: block; }
+
+  #sc-bot .sc-window {
+    position: fixed;
+    left: 25px;
+    bottom: 102px;
+    width: 365px;
+    max-width: calc(100vw - 30px);
+    height: 535px;
+    max-height: calc(100dvh - 125px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--sc-border);
+    border-radius: 23px;
+    background: var(--sc-bg);
+    box-shadow: 0 20px 80px rgba(0,0,0,.65);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px) scale(.96);
+    transform-origin: bottom left;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
+  }
+
+  #sc-bot .sc-window.sc-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  #sc-bot .sc-header {
+    padding: 17px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(120deg,#222,#101010 75%);
+    border-bottom: 1px solid var(--sc-border);
+  }
+
+  #sc-bot .sc-logo {
+    width: 47px;
+    height: 47px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.2);
+    object-fit: cover;
+    background: #222;
+  }
+
+  #sc-bot .sc-brand { flex: 1; min-width: 0; }
+
+  #sc-bot .sc-brand strong {
+    display: block;
+    font-size: 14px;
+    letter-spacing: .3px;
+  }
+
+  #sc-bot .sc-brand small {
+    display: block;
+    margin-top: 6px;
+    color: var(--sc-muted);
+    font-size: 11px;
+  }
+
+  #sc-bot .sc-status {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 5px;
+    border-radius: 50%;
+    background: #a7e6bd;
+    box-shadow: 0 0 10px rgba(167,230,189,.6);
+  }
+
+  #sc-bot .sc-close {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--sc-border);
+    border-radius: 10px;
+    color: #fff;
+    background: #ffffff0c;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  #sc-bot .sc-close:hover { background: #ffffff20; }
+
+  #sc-bot .sc-messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 17px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #444 transparent;
+  }
+
+  #sc-bot .sc-welcome {
+    padding: 16px;
+    border: 1px solid var(--sc-border);
+    border-radius: 17px;
+    background: linear-gradient(145deg,#202020,#151515);
+    animation: sc-appear .35s ease both;
+  }
+
+  #sc-bot .sc-welcome h3 {
+    font-size: 15px;
+    margin: 0 0 9px;
+  }
+
+  #sc-bot .sc-welcome p {
+    color: #c4c4c4;
+    font-size: 12px;
+    line-height: 2;
+    margin: 0;
+  }
+
+  #sc-bot .sc-message {
+    max-width: 91%;
+    padding: 11px 13px;
+    border-radius: 14px;
+    font-size: 12px;
+    line-height: 2;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    animation: sc-appear .25s ease both;
+  }
+
+  #sc-bot .sc-message.bot {
+    align-self: flex-start;
+    background: #202020;
+    border: 1px solid var(--sc-border);
+    border-bottom-right-radius: 5px;
+  }
+
+  #sc-bot .sc-message.user {
+    align-self: flex-end;
+    color: #111;
+    background: #f0f0f0;
+    border-bottom-left-radius: 5px;
+  }
+
+  #sc-bot .sc-quick-title {
+    color: var(--sc-muted);
+    font-size: 11px;
+    margin: 2px 2px 0;
+  }
+
+  #sc-bot .sc-quick {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  #sc-bot .sc-quick button {
+    min-height: 42px;
+    padding: 9px 7px;
+    border-radius: 12px;
+    border: 1px solid var(--sc-border);
+    background: #171717;
+    color: #eee;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .2s ease;
+  }
+
+  #sc-bot .sc-quick button:hover {
+    background: #f1f1f1;
+    color: #111;
+    border-color: #f1f1f1;
+    transform: translateY(-2px);
+  }
+
+  #sc-bot .sc-quick button span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  #sc-bot .sc-typing {
+    align-self: flex-start;
+    display: flex;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 13px;
+    background: #202020;
+  }
+
+  #sc-bot .sc-typing i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ddd;
+    animation: sc-dot .8s infinite alternate;
+  }
+
+  #sc-bot .sc-typing i:nth-child(2) { animation-delay: .2s; }
+  #sc-bot .sc-typing i:nth-child(3) { animation-delay: .4s; }
+
+  #sc-bot .sc-input-area {
+    padding: 12px;
+    border-top: 1px solid var(--sc-border);
+    background: #121212;
+  }
+
+  #sc-bot .sc-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border: 1px solid #333;
+    border-radius: 14px;
+    background: #1b1b1b;
+    transition: border-color .2s;
+  }
+
+  #sc-bot .sc-input-row:focus-within { border-color: #888; }
+
+  #sc-bot .sc-input-row input {
+    flex: 1;
+    width: 0;
+    padding: 8px 7px;
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    font-size: 12px;
+  }
+
+  #sc-bot .sc-input-row input::placeholder { color: #888; }
+
+  #sc-bot .sc-send {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 10px;
+    background: #f1f1f1;
+    color: #111;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform .2s;
+  }
+
+  #sc-bot .sc-send:hover { transform: scale(1.06); }
+
+  #sc-bot .sc-footnote {
+    margin: 9px 0 0;
+    color: #737373;
+    text-align: center;
+    font-size: 9px;
+  }
+
+  @keyframes sc-float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes sc-appear {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sc-dot {
+    from { opacity: .35; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(-4px); }
+  }
+
+  @media (max-width: 480px) {
+    #sc-bot .sc-launcher { left: 15px; bottom: 15px; }
+    #sc-bot .sc-window {
+      left: 10px;
+      bottom: 91px;
+      width: calc(100vw - 20px);
+      max-height: calc(100dvh - 110px);
+      border-radius: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sc-bot *, #sc-bot *::before, #sc-bot *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div id="sc-bot">
+  <button class="sc-launcher" id="sc-launcher"
+          type="button" aria-label="باز کردن دستیار شیراز سیتی"
+          aria-expanded="false" aria-controls="sc-window">
+    <img src="1000072823.jpg" alt="لوگوی Shiraz City"
+         onerror="this.parentElement.classList.add('sc-no-logo')">
+    <span class="sc-fallback">S</span>
+  </button>
+
+  <section class="sc-window" id="sc-window"
+           role="dialog" aria-label="دستیار Shiraz City" aria-hidden="true">
+    <header class="sc-header">
+      <img class="sc-logo" src="1000072823.jpg" alt="لوگوی Shiraz City"
+           onerror="this.style.display='none'">
+      <div class="sc-brand">
+        <strong>SHIRAZ CITY</strong>
+        <small><span class="sc-status"></span> دستیار راهنمای سرور</small>
+      </div>
+      <button class="sc-close" id="sc-close" type="button"
+              aria-label="بستن دستیار">×</button>
+    </header>
+
+    <div class="sc-messages" id="sc-messages" aria-live="polite">
+      <div class="sc-welcome">
+        <h3>خوش اومدی به شیراز سیتی 👋</h3>
+        <p>
+          من دستیار راهنمای سرور هستم.
+          یکی از گزینه‌های زیر رو انتخاب کن یا سؤالت رو بنویس.
+        </p>
+      </div>
+
+      <div class="sc-quick-title">سریع بهت راهنمایی می‌کنم</div>
+      <div class="sc-quick">
+        <button type="button" data-question="معرفی سرور">
+          <span>✦</span>معرفی سرور
+        </button>
+        <button type="button" data-question="ویژگی‌های سرور">
+          <span>◈</span>ویژگی‌های سرور
+        </button>
+        <button type="button" data-question="تیم مدیریت">
+          <span>♙</span>تیم مدیریت
+        </button>
+        <button type="button" data-question="قوانین رول‌پلی">
+          <span>≡</span>قوانین رول‌پلی
+        </button>
+        <button type="button" data-question="دیسکورد">
+          <span>◎</span>دیسکورد سرور
+        </button>
+        <button type="button" data-question="راهنمای ورود">
+          <span>➜</span>راهنمای ورود
+        </button>
+      </div>
+    </div>
+
+    <div class="sc-input-area">
+      <form class="sc-input-row" id="sc-form">
+        <input id="sc-input" type="text" maxlength="300"
+               placeholder="سؤالت رو اینجا بنویس..." autocomplete="off"
+               aria-label="سؤال شما">
+        <button class="sc-send" type="submit" aria-label="ارسال سؤال">➤</button>
+      </form>
+      <p class="sc-footnote">SHIRAZ CITY · VMP ROLEPLAY</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById('sc-bot');
+  if (!root || root.dataset.initialized === 'true') return;
+  root.dataset.initialized = 'true';
+
+  const launcher = root.querySelector('#sc-launcher');
+  const panel = root.querySelector('#sc-window');
+  const close = root.querySelector('#sc-close');
+  const messages = root.querySelector('#sc-messages');
+  const form = root.querySelector('#sc-form');
+  const input = root.querySelector('#sc-input');
+
+  const answers = [
+    {
+      keys: ['معرفی', 'سرور', 'شیر‌از', 'شیراز'],
+      answer: 'به Shiraz City خوش اومدی! ✦\nیک کامیونیتی رول‌پلی برای تجربه‌ای جذاب در دنیای VMP.\nبرای جزئیات بیشتر، بخش‌های سایت رو بررسی کن.'
+    },
+    {
+      keys: ['ویژگی', 'سیستم', 'امکانات', 'اقتصاد', 'ماشین', 'مپ'],
+      answer: 'ویژگی‌های شیراز سیتی:\n\n◈ اقتصاد پویا\n◈ مپ اختصاصی\n◈ ماشین‌های اختصاصی\n◈ پشتیبانی ۲۴ ساعته\n\nجزئیات هر سیستم رو می‌تونی از اطلاعات رسمی سرور دنبال کنی.'
+    },
+    {
+      keys: ['مدیریت', 'ادمین', 'owner', 'تیم'],
+      answer: 'تیم مدیریت Shiraz City:\n\n• Owner: Arad-akrami\n• Superme Coamander: taha-azad\n• General Maneger: Ojilo-apex\n\nنام مالک معرفی‌شده: Rayan Asghari'
+    },
+    {
+      keys: ['قانون', 'رول', 'rp', 'مجازات'],
+      answer: 'برای رعایت قوانین رول‌پلی، بخش قوانین سایت رو مطالعه کن. رعایت قوانین و احترام به سایر بازیکنان برای تجربه بهتر همه ضروریه.'
+    },
+    {
+      keys: ['دیسکورد', 'discord', 'لینک'],
+      answer: 'دیسکورد Shiraz City به‌زودی معرفی می‌شه. برای دریافت لینک رسمی، اطلاعیه‌های سایت رو دنبال کن.'
+    },
+    {
+      keys: ['ورود', 'وصل', 'اتصال', 'چطور بازی', 'شروع'],
+      answer: 'برای اطلاع از شرایط ورود و راه‌اندازی بازی، اطلاعیه‌ها و راهنمای رسمی سرور رو دنبال کن. اطلاعات اتصال هنوز در این دستیار ثبت نشده.'
+    },
+    {
+      keys: ['مالک', 'رایان', 'rayan'],
+      answer: 'نام مالک معرفی‌شده برای Shiraz City: Rayan Asghari'
+    }
+  ];
+
+  function setOpen(open) {
+    panel.classList.toggle('sc-open', open);
+    panel.setAttribute('aria-hidden', String(!open));
+    launcher.setAttribute('aria-expanded', String(open));
+    if (open) setTimeout(() => input.focus(), 220);
+  }
+
+  launcher.addEventListener('click', () => {
+    setOpen(!panel.classList.contains('sc-open'));
+  });
+  close.addEventListener('click', () => setOpen(false));
+
+  function addMessage(text, who) {
+    const bubble = document.createElement('div');
+    bubble.className = 'sc-message ' + who;
+    bubble.textContent = text;
+    messages.appendChild(bubble);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function findAnswer(question) {
+    const q = question.toLowerCase().replace(/\s+/g, ' ').trim();
+    for (const item of answers) {
+      if (item.keys.some(key => q.includes(key))) return item.answer;
+    }
+    return 'سؤال خوبی بود! فعلاً پاسخ این سؤال در دستیار ثبت نشده.\nمی‌تونی درباره معرفی سرور، ویژگی‌ها، تیم مدیریت، قوانین یا دیسکورد بپرسی.';
+  }
+
+  function ask(question) {
+    const q = question.trim();
+    if (!q) return;
+
+    addMessage(q, 'user');
+
+    const typing = document.createElement('div');
+    typing.className = 'sc-typing';
+    typing.innerHTML = '<i></i><i></i><i></i>';
+    typing.setAttribute('aria-label', 'در حال آماده‌سازی پاسخ');
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+
+    // پاسخ محلی و بدون نیاز به سرور
+    window.setTimeout(() => {
+      typing.remove();
+      addMessage(findAnswer(q), 'bot');
+    }, 450);
+  }
+
+  root.querySelectorAll('[data-question]').forEach(button => {
+    button.addEventListener('click', () => ask(button.dataset.question));
+  });
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const question = input.value;
+    input.value = '';
+    ask(question);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && panel.classList.contains('sc-open')) {
+      setOpen(false);
+    }
+  });
+})();
+</script>
+<!-- END SHIRAZ CITY ASSISTANT -->
+```
+</body>
+</html>
